@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRG | Automatic Radiology Report Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <header>
+        <div class="logo">
+            <span class="pulse"></span>
+            <h1>ARRG <span>AI</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Analyze</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Security</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Next-Gen Radiology <br><span class="gradient-text">Report Generation</span></h2>
+            <p>Upload an X-ray scan and let our advanced ResNet-T5 architecture generate a detailed clinical report in seconds.</p>
+        </section>
+
+        <section class="upload-area" id="drop-zone">
+            <div class="upload-content" id="upload-prompt">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                </div>
+                <h3>Drop your X-ray here</h3>
+                <p>or click to browse files (PNG, JPG, DICOM)</p>
+                <input type="file" id="file-input" hidden accept="image/*">
+            </div>
+
+            <div class="preview-content hidden" id="preview-container">
+                <div class="image-wrapper">
+                    <img id="image-preview" src="" alt="X-ray Preview">
+                    <div class="scanning-line"></div>
+                </div>
+                <div class="status-badge" id="analyze-status">Ready to Analyze</div>
+                <button id="process-btn" class="btn-primary">Generate Report</button>
+            </div>
+        </section>
+
+        <section class="results-area hidden" id="results-panel">
+            <div class="result-header">
+                <h3>Clinical Report</h3>
+                <div class="confidence-meter">
+                    <span>Confidence: </span>
+                    <strong id="confidence-val">98.4%</strong>
+                </div>
+            </div>
+            <div class="report-content">
+                <div class="report-section">
+                    <h4>Findings</h4>
+                    <p id="findings-text">Analysis in progress...</p>
+                </div>
+                <div class="report-section">
+                    <h4>Impressions</h4>
+                    <p id="impression-text">Awaiting final validation...</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn-secondary" onclick="window.print()">Export PDF</button>
+                <button class="btn-outline" id="reset-btn">New Scan</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
